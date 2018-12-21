@@ -13,8 +13,13 @@ public class MTC {
 	}
 
 	public void update() {
+		frame.squareLoader(new MTC());	
+		frame.getButton().setVisible(false);
+	}
+
+	public void updateSquarePosition() {
 		gameManager.update(player, 1);
 		frame.updateCounter(String.valueOf(player.getPoints()));
-		frame.imagineNewPosition();
+		frame.imagineNewPosition();		
 	}
 }

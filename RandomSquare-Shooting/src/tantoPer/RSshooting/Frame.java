@@ -15,6 +15,7 @@ public class Frame {
 	private JFrame frame;
 	private Square squares[];
 	private int position = 0;
+	private JButton button;
 
 	Random rand = new Random();
 
@@ -22,41 +23,43 @@ public class Frame {
 		frame = new JFrame("Random Square Shooting : THE GAME!");
 		squares = new Square[2];
 
-		for (int i = 0; i < squares.length; i++) {
-			squares[i] = squareFactory(randomPosition(i), randomPosition(i), 50, 50, "circle.png");
-
-			Icon image = new ImageIcon(getClass().getResource(squares[i].getFileName()));
-			imgToView = new JLabel(image);
-			imgToView.setBounds(squares[i].getxPosition(), squares[i].getSizeY(), 50, 50);
-			frame.add(imgToView).setVisible(true);
-		}
-
 		frame.setSize(500, 400);
 		Container myContainer = frame.getContentPane();
 		myContainer.setLayout(null);
 		createButton(frame, mtc);
 		createPointString();
 		createLabelCounter();
-		imagineLoader("circle.png");
-		frame.setResizable(false);
+		
+		
+		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-
-	private int randomPosition(int i) {
-		return 150 + 100 * i;
+	
+	public void squareLoader(MTC mtc) {
+		for (int index = 0; index < squares.length; index++) {
+			squares[index] = squareFactory(randomPosition(index), randomPosition(index), 50, 50, "circle.png");
+			
+			Icon image = new ImageIcon(getClass().getResource(squares[index].getFileName()));
+			imgToView = new JLabel(image);
+			imgToView.setBounds(squares[index].getxPosition(), squares[index].getSizeY(), 50, 50);
+			imgToView.addMouseListener(new SquareEvent(mtc));
+			frame.add(imgToView).setVisible(true);
+		}
 	}
-
+	private void createButton(JFrame frame, MTC mtc) {
+		button = new JButton("Start!");
+		button.setBounds(200, 20, 100, 50);
+		button.addMouseListener(new ButtonEvent(mtc));
+		frame.add(button);
+	}
+	
+	private int randomPosition(int i) {
+		return 150*(i+1) + 100;
+	}
+	
 	private Square squareFactory(int xPosition, int yPosition, int sizeX, int sizeY, String fileName) {
 		return new Square(xPosition, yPosition, sizeX, sizeY, fileName);
-	}
-
-	private void imagineLoader(String fileName) {
-		Icon image = new ImageIcon(getClass().getResource(fileName));
-		imgToView = new JLabel(image);
-		imgToView.setBounds(150, 150, 50, 50);
-		frame.add(imgToView).setVisible(true);
-
 	}
 
 	public void imagineNewPosition() {
@@ -75,12 +78,6 @@ public class Frame {
 		frame.add(pointString);
 	}
 
-	private void createButton(JFrame frame, MTC mtc) {
-		JButton button = new JButton("click me!");
-		button.setBounds(200, 20, 100, 50);
-		button.addMouseListener(new MouseEvent(mtc));
-		frame.add(button);
-	}
 
 	private void createLabelCounter() {
 		counter = new JLabel();
@@ -95,6 +92,10 @@ public class Frame {
 
 	public int getPosition() {
 		return position;
+	}
+
+	public JButton getButton() {
+		return button;
 	}
 
 	public void setPosition(int position) {
