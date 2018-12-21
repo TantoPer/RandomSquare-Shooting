@@ -19,12 +19,12 @@ public class Frame {
 	Random rand = new Random();
 
 	public Frame(MTC mtc) {
-		frame = new JFrame("Start");
+		frame = new JFrame("Random Square Shooting : THE GAME!");
 		squares = new Square[2];
 
 		for (int i = 0; i < squares.length; i++) {
 			squares[i] = squareFactory(randomPosition(i), randomPosition(i), 50, 50, "circle.png");
-			
+
 			Icon image = new ImageIcon(getClass().getResource(squares[i].getFileName()));
 			imgToView = new JLabel(image);
 			imgToView.setBounds(squares[i].getxPosition(), squares[i].getSizeY(), 50, 50);
@@ -38,7 +38,7 @@ public class Frame {
 		createPointString();
 		createLabelCounter();
 		imagineLoader("circle.png");
-
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
@@ -63,17 +63,9 @@ public class Frame {
 		int randomX, randomY;
 		randomX = rand.nextInt(500);
 		randomY = rand.nextInt(400);
-		if (getPosition() == 0) {
-			imgToView.setVisible(false);
-			imgToView.setBounds(randomX, randomY, 50, 50);
-			frame.add(imgToView).setVisible(true);
-			setPosition(1);
-		} else {
-			imgToView.setVisible(false);
-			imgToView.setBounds(randomX, randomY, 50, 50);
-			frame.add(imgToView).setVisible(true);
-			setPosition(0);
-		}
+		imgToView.setVisible(false);
+		imgToView.setBounds(randomX, randomY, 50, 50);
+		frame.add(imgToView).setVisible(true);
 	}
 
 	private void createPointString() {
@@ -81,7 +73,6 @@ public class Frame {
 		pointString.setText("Points:");
 		pointString.setBounds(100, 300, 100, 50);
 		frame.add(pointString);
-
 	}
 
 	private void createButton(JFrame frame, MTC mtc) {
