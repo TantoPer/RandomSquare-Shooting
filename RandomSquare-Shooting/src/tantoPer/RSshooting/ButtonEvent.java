@@ -2,19 +2,17 @@ package tantoPer.RSshooting;
 
 import java.awt.event.MouseListener;
 
-public class MouseEvent implements MouseListener {
+public class ButtonEvent implements MouseListener {
 
 	private MTC mtc;
 
-	public MouseEvent(MTC mtc) {
+	public ButtonEvent(MTC mtc) {
 		this.mtc = mtc;
 	}
 
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
-	//	mtc.update();
-		mtc.update2();
-		
+		mtc.update();
 	}
 
 	@Override

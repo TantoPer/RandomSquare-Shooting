@@ -7,13 +7,14 @@ public class Square {
 	Integer sizeY;
 	String fileName;
 
+
 	public Square(Integer xPosition, Integer yPosition, Integer sizeX, Integer sizeY, String fileName) {
 		super();
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		this.fileName = fileName;
+		this.fileName = fileName;	
 	}
 
 	public String getFileName() {
@@ -55,5 +56,5 @@ public class Square {
 	public void setSizeY(Integer sizeY) {
 		this.sizeY = sizeY;
 	}
-	
+
 }

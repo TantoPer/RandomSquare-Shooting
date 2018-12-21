@@ -21,9 +21,7 @@ public class Frame {
 
 	public Frame(MTC mtc) {
 		frame = new JFrame("Random Square Shooting : THE GAME!");
-		squares = new Square[5];
-
-		// squareLoader();
+		squares = new Square[2];
 
 		frame.setSize(500, 400);
 		Container myContainer = frame.getContentPane();
@@ -38,14 +36,22 @@ public class Frame {
 		frame.setVisible(true);
 	}
 	
-	public void squareLoader() {
+	public void squareLoader(MTC mtc) {
 		for (int index = 0; index < squares.length; index++) {
 			squares[index] = squareFactory(randomPosition(index), randomPosition(index), 50, 50, "circle.png");
+			
 			Icon image = new ImageIcon(getClass().getResource(squares[index].getFileName()));
 			imgToView = new JLabel(image);
 			imgToView.setBounds(squares[index].getxPosition(), squares[index].getSizeY(), 50, 50);
+			imgToView.addMouseListener(new SquareEvent(mtc));
 			frame.add(imgToView).setVisible(true);
 		}
+	}
+	private void createButton(JFrame frame, MTC mtc) {
+		button = new JButton("Start!");
+		button.setBounds(200, 20, 100, 50);
+		button.addMouseListener(new ButtonEvent(mtc));
+		frame.add(button);
 	}
 	
 	private int randomPosition(int i) {
@@ -72,12 +78,6 @@ public class Frame {
 		frame.add(pointString);
 	}
 
-	private void createButton(JFrame frame, MTC mtc) {
-		button = new JButton("Start!");
-		button.setBounds(200, 20, 100, 50);
-		button.addMouseListener(new MouseEvent(mtc));
-		frame.add(button);
-	}
 
 	private void createLabelCounter() {
 		counter = new JLabel();
