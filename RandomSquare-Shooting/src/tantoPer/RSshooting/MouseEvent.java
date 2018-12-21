@@ -12,7 +12,8 @@ public class MouseEvent implements MouseListener {
 
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
-		mtc.update();
+	//	mtc.update();
+		mtc.update2();
 		
 	}
 

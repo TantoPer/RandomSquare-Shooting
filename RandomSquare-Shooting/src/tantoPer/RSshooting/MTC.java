@@ -17,4 +17,10 @@ public class MTC {
 		frame.updateCounter(String.valueOf(player.getPoints()));
 		frame.imagineNewPosition();
 	}
+	
+	public void update2() {
+		
+		frame.squareLoader();
+		frame.getButton().setVisible(false);
+		}
 }
