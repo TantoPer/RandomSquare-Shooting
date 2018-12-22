@@ -14,7 +14,6 @@ public class SquareEvent implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	mtc.updateSquarePosition();
-	
 	}
 
 	@Override
@@ -27,7 +26,6 @@ public class SquareEvent implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
 	}
 
 	@Override
