@@ -11,7 +11,7 @@ public class MTC {
 		gameManager = new GameManager();
 		player = new Player();
 		frame = new Frame(new MTC());
-		mousePointerThread = new MousePointerThread(frame, "circle.png");
+		mousePointerThread = new MousePointerThread(frame, "pointer_cross_aim.png");
 		mousePointerThread.run();
 	}
 

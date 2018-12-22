@@ -26,7 +26,7 @@ public class MousePointerThread implements Runnable {
 				Thread.sleep(50);
 				follow.setVisible(false);
 				mouse = MouseInfo.getPointerInfo().getLocation();
-				follow.setBounds((int) mouse.getX() - 30, (int) mouse.getY() - 30, 50, 50);
+				follow.setBounds((int) mouse.getX() - 28, (int) mouse.getY() - 41, 50, 50);
 				frame.getFrame().add(follow).setVisible(true);
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
