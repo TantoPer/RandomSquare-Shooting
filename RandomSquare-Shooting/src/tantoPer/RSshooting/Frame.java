@@ -21,16 +21,16 @@ public class Frame {
 	public Frame(MTC mtc) {
 		frame = new JFrame("Move the Cicle");
 		
-		frame.setSize(500, 400);
-		Container myContainer = frame.getContentPane();
+		getFrame().setSize(500, 400);
+		Container myContainer = getFrame().getContentPane();
 		myContainer.setLayout(null);
-		createButton(frame, mtc);
+		createButton(getFrame(), mtc);
 		createPointString();
 		createLabelCounter();
 		imagineLoader("circle.png");
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().setVisible(true);
 	}
 
 	private void createButton(JFrame frame, MTC mtc) {
@@ -44,14 +44,14 @@ public class Frame {
 		counter = new JLabel();
 		counter.setText("0");
 		counter.setBounds(200, 300, 100, 50);
-		frame.add(counter);
+		getFrame().add(counter);
 	}
 
 	private void imagineLoader(String fileName) {
 		Icon image = new ImageIcon(getClass().getResource(fileName));
 		imgToView = new JLabel(image);
 		imgToView.setBounds(150, 150, 50, 50);
-		frame.add(imgToView).setVisible(true);
+		getFrame().add(imgToView).setVisible(true);
 
 	}
 
@@ -62,12 +62,12 @@ public class Frame {
 		if(getPosition()==0) {
 			imgToView.setVisible(false);	
 			imgToView.setBounds(randomX, randomY, 50, 50);
-			frame.add(imgToView).setVisible(true);
+			getFrame().add(imgToView).setVisible(true);
 			setPosition(1);
 		}else {
 			imgToView.setVisible(false);
 			imgToView.setBounds(randomX, randomY, 50, 50);
-			frame.add(imgToView).setVisible(true);
+			getFrame().add(imgToView).setVisible(true);
 			setPosition(0);	
 		}
 	}
@@ -76,7 +76,7 @@ public class Frame {
 		JLabel pointString = new JLabel();
 		pointString.setText("Points:");
 		pointString.setBounds(100, 300, 100, 50);
-		frame.add(pointString);
+		getFrame().add(pointString);
 
 	}
 
@@ -92,6 +92,8 @@ public class Frame {
 		this.position = position;
 	}
 
-	
+	public JFrame getFrame() {
+		return frame;
+	}
 
 }
