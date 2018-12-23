@@ -19,7 +19,7 @@ public class Frame {
 
 	public Frame(MTC mtc) {
 		frame = new JFrame("Random Square Shooting : THE GAME!");
-		squares = new Square[2];
+		squares = new Square[5];
 		frame.setSize(500, 400);
 		Container myContainer = frame.getContentPane();
 		myContainer.setLayout(null);
@@ -42,7 +42,7 @@ public class Frame {
 		}
 	}
 	private int randomPosition(int i) {
-		return 150*(i+1) + 100;
+		return 50 + i * 6 +100;
 	}
 	
 	private void createButton(JFrame frame, MTC mtc) {
