@@ -26,7 +26,6 @@ public class Frame {
 		createButton(getFrame(), mtc);
 		createPointString();
 		createLabelCounter();
-
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -43,7 +42,7 @@ public class Frame {
 		}
 	}
 	private int randomPosition(int i) {
-		return 50 + i * 6 +100;
+		return 50 + i * 6 +i*i+50;
 	}
 	
 	private void createButton(JFrame frame, MTC mtc) {
@@ -53,7 +52,7 @@ public class Frame {
 		frame.add(button);
 	}
 
-  private Square squareFactory(int xPosition, int yPosition, int xSize, int ySize, String fileName) {
+	private Square squareFactory(int xPosition, int yPosition, int xSize, int ySize, String fileName) {
 		return new Square(xPosition, yPosition, xSize, ySize, fileName);
 	}
 
@@ -69,8 +68,6 @@ public class Frame {
 		pointString.setBounds(100, 300, 100, 50);
 		frame.add(pointString);
 	}
-
-
 
 	private void createLabelCounter() {
 		counter = new JLabel();
