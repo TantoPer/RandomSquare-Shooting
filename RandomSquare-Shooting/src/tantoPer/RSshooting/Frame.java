@@ -23,9 +23,10 @@ public class Frame {
 		frame.setSize(500, 400);
 		Container myContainer = frame.getContentPane();
 		myContainer.setLayout(null);
-		createButton(frame, mtc);
+		createButton(getFrame(), mtc);
 		createPointString();
 		createLabelCounter();
+
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -51,8 +52,8 @@ public class Frame {
 		button.addMouseListener(new ButtonEvent(mtc));
 		frame.add(button);
 	}
-	
-	private Square squareFactory(int xPosition, int yPosition, int xSize, int ySize, String fileName) {
+
+  private Square squareFactory(int xPosition, int yPosition, int xSize, int ySize, String fileName) {
 		return new Square(xPosition, yPosition, xSize, ySize, fileName);
 	}
 
@@ -68,6 +69,7 @@ public class Frame {
 		pointString.setBounds(100, 300, 100, 50);
 		frame.add(pointString);
 	}
+
 
 
 	private void createLabelCounter() {
@@ -91,6 +93,10 @@ public class Frame {
 
 	public void setPosition(int position) {
 		this.position = position;
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 
 }
