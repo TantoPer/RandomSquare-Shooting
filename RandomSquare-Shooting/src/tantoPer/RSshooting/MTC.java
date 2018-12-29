@@ -11,18 +11,19 @@ public class MTC {
 		gameManager = new GameManager();
 		player = new Player();
 		frame = new Frame(new MTC());
-		mousePointerThread = new MousePointerThread(frame, "pointer_cross_aim.png");
-		mousePointerThread.run();
+		//mousePointerThread = new MousePointerThread(frame, "pointer_cross_aim.png");
+		 
 	}
 
 	public void update() {
-		frame.squareLoader(new MTC());	
 		frame.getButton().setVisible(false);
+		frame.squareLoader(new MTC());
+		//mousePointerThread.run();
 	}
 
 	public void updateSquarePosition() {
 		gameManager.update(player, 1);
 		frame.updateCounter(String.valueOf(player.getPoints()));
-		frame.imageNewPosition();		
+		frame.imageNewPosition();
 	}
 }

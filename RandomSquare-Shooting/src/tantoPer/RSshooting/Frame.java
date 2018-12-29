@@ -1,6 +1,8 @@
 package tantoPer.RSshooting;
 
 import java.awt.Container;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -21,6 +23,7 @@ public class Frame {
 		frame = new JFrame("Random Square Shooting : THE GAME!");
 		squares = new Square[5];
 		frame.setSize(500, 400);
+		frame.addMouseListener(new FrameEvents(this));
 		Container myContainer = frame.getContentPane();
 		myContainer.setLayout(null);
 		createButton(getFrame(), mtc);
@@ -30,21 +33,24 @@ public class Frame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-	
+
 	public void squareLoader(MTC mtc) {
 		for (int index = 0; index < squares.length; index++) {
-			squares[index] = squareFactory(randomPosition(index), randomPosition(index), 50, 50, "circle.png");	
+			squares[index] = squareFactory(randomPosition(100), randomPosition(30), 30, 30, "circle.png");
 			Icon image = new ImageIcon(getClass().getResource(squares[index].getFileName()));
 			imgToView = new JLabel(image);
-			imgToView.setBounds(squares[index].getxPosition(), squares[index].getSizeY(), 50, 50);
+			frame.add(imgToView).setVisible(false);
+			imgToView.setBounds(squares[index].getxPosition(), squares[index].getyPosition(), squares[index].getSizeX(),
+					squares[index].getSizeY());
 			imgToView.addMouseListener(new SquareEvent(mtc));
 			frame.add(imgToView).setVisible(true);
 		}
 	}
+
 	private int randomPosition(int i) {
-		return 50 + i * 6 +i*i+50;
+		return i + rand.nextInt(200);
 	}
-	
+
 	private void createButton(JFrame frame, MTC mtc) {
 		button = new JButton("Start!");
 		button.setBounds(200, 20, 100, 50);
@@ -56,9 +62,9 @@ public class Frame {
 		return new Square(xPosition, yPosition, xSize, ySize, fileName);
 	}
 
-	public void imageNewPosition() {	
+	public void imageNewPosition() {
 		imgToView.setVisible(false);
-		imgToView.setBounds(rand.nextInt(300),rand.nextInt(250), 50, 50);
+		imgToView.setBounds(rand.nextInt(300), rand.nextInt(250), 30, 30);
 		frame.add(imgToView).setVisible(true);
 	}
 
